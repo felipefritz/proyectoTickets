@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>CF EXPRESS | {% block title %}Login Cf Express{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="{% static 'core/plugins/fontawesome-free/css/all.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'core/plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'core/dist/css/adminlte.min.css' %}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
+      rel="stylesheet"
+    />
+    {% block head %} {% endblock head %}
+  </head>
+
+  <body class="hold-transition login-page bg-dark">
+    <div class="login-box">
+      <p class="mb-0">
+        <a
+          class="btn btn-sm btn-block btn-outline-danger"
+          href="{% url 'core:index' %}"
+        >
+          <span class="fa fa-arrow-left"></span>
+          Volver al sitio web
+        </a>
+      </p>
+      <div class="login-logo">
+        Bienvenido a <br />
+        <h2><strong>CF EXPRESS</strong></h2>
+      </div>
+      {% block form %}
+
+      <div class="card">
+        <div class="card-body login-card-body bg-gradient-dark">
+          <p class="login-box-msg">Inicia sesion con tu email y clave</p>
+
+          <form method="post">
+            {% csrf_token %} {% if form.non_field_errors %} {#comprobar errores
+            con .non_field_errors, si tiene errores devuelve mensaje error#}
+            <p style="color: red">
+              Usuario o contraseña incorrectos, Verifique que sus datos son
+              correctos.
+            </p>
+            {% endif %}
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                id="id_username"
+                autocomplete="current-username"
+                autofocus
+                name="username"
+                class="form-control"
+                placeholder="Email"
+              />
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-envelope"></span>
+                </div>
+              </div>
+            </div>
+            <div class="input-group mb-3">
+              <input
+                type="password"
+                id="id_password"
+                name="password"
+                autocomplete="current-password"
+                required
+                class="form-control"
+                placeholder="Password"
+              />
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-lock"></span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4 offset-4">
+                <button
+                  type="submit"
+                  class="btn btn-outline-success btn-sm btn-block"
+                >
+                  Acceder
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- /.login-card-body -->
+      </div>
+      {% endblock form %}
+    </div>
+    <!-- /.login-box -->
+
+    <!-- jQuery -->
+    <script src="{% static 'core/plugins/jquery/jquery.min.js' %}"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{% static 'core/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- AdminLTE App -->
+    <script src="{% static 'core/dist/js/adminlte.min.js' %}"></script>
+    {% block js %} {% endblock js %}
+  </body>
+</html>

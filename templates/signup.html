@@ -1,0 +1,176 @@
+{% extends 'website/index.html' %}
+{% load static %}
+{% block title %}Registro{% endblock %}
+{% block header %}
+{% endblock %}
+{% block header_menu %}
+{% endblock %}
+{% block content %}
+
+    <div class="container">
+        <main id="main">
+            <div class="row">
+                <div class="col-md-8 col-sm-8 col-xs-8 col-lg-8">
+                    <div class="card text-blue bg-blue">
+                        <div class="card-body ">
+                            <h4 class="text-info">Registro</h4>
+                            {% if form.errors %}
+                                <h5 class="text text-danger">Favor verifica los errores y vuelve a intentarlo</h5>
+                            {% endif %}
+                            <form id="form" method="post">{% csrf_token %}
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            {{ form.is_person.label }} <span class="text text-danger"> *</span>
+                                            {{ form.is_person }}
+                                            <small class="text text-danger"> {{ form.is_person.errors }}</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            {{ form.plan.label }} <span class="text text-danger"> *</span>
+                                            {{ form.plan }}
+                                            <small class="text text-danger"> {{ form.plan.errors }}</small>
+                                        </div>
+                                    </div>
+                                     <div class="col-md-4">
+                                        <div class="form-group" id="divNegocio">
+                                            {{ form.nombre_negocio.label }}
+                                            {{ form.nombre_negocio }}
+                                            <small class="text text-danger"> {{ form.nombre_negocio.errors }}</small>
+                                        </div>
+                                     </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            {{ form.first_name.label }}<span class="text text-danger"> *</span>
+                                            {{ form.first_name }}
+                                            <small class="text text-danger"> {{ form.first_name.errors }}</small>
+                                            <div class="validate"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            {{ form.last_name.label }}<span class="text text-danger"> *</span>
+                                            {{ form.last_name }}
+                                            <small class="text text-danger"> {{ form.last_name.errors }}</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            {{ form.rut.label }}<span class="text text-danger"> *</span>
+                                            {{ form.rut }}
+                                            <small class="text text-danger"> {{ form.rut.errors }}</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            {{ form.telefono.label }} <span class="text text-danger">*</span>
+                                            {{ form.telefono }}
+                                            <small class="text text-danger"> {{ form.telefono.errors }}</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            {{ form.email.label }} <span class="text text-danger"> *</span>
+                                            {{ form.email }}
+                                            <small class="text text-danger"> {{ form.email.errors }}</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            {{ form.comuna.label }}<span class="text text-danger"> *</span>
+                                            {{ form.comuna }}
+                                            <small class="text text-danger"> {{ form.comuna.errors }}</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            {{ form.cantidad_envios_declarados_mes.label }}<span
+                                                class="text text-danger"> *</span>
+                                            {{ form.cantidad_envios_declarados_mes }}
+                                            <small class="text text-danger"> {{ form.cantidad_envios_declarados_mes.errors }}</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            {{ form.sitio_web.label }}
+                                            {{ form.sitio_web }}
+                                            <small class="text text-danger"> {{ form.sitio_web.errors }}</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            {{ form.password1.label }}
+                                            {{ form.password1 }}
+                                            <small class="text text-danger"> {{ form.password1.errors }}</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            {{ form.password2.label }}
+                                            {{ form.password2 }}
+                                            <small class="text text-danger"> {{ form.password2.errors }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-info btn-block text text-center">Enviar</button>
+                                <!-- /.col -->
+                            </form>
+                            <br>
+                            <a href="{% url 'login' %}" class="btn btn-warning btn-sm text-center">Ya tengo cuenta</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4 pt-4 col-sm-4 col-xs-4 col-lg-4" data-aos="fade-up">
+                                <img src="{% static 'website/assets/img/worker.jpg' %}" class="img-fluid img-rounded img-size-32"
+                         alt="">
+                    <h3>CF Express como tu aliado logistico!</h3>
+                    <p class="font-italic">
+                    <p>Recogemos tus envios donde necesites</p>
+                    Si no tienes una pagina web donde vender tus productos, nosotros lo hacemos por ti.<br>
+                    <br>
+                    <p>
+                        Obten el numero de seguimiento al momento de agendar tus retiros para mantener a tus clientes
+                        informados
+                    </p>
+                    <p>
+                        Cuando haces una carga masiva de tus envios calculamos el menor precio entre todos los courier
+                        para tus envios, o bien puedes editar el courier de tus envios
+                    </p>
+                </div>
+            </div>
+        </main>
+    </div>
+{% endblock %}
+{% block tarifador %}
+{% endblock %}
+{% block js %}
+    <script src="{% static 'core/plugins/select2/js/select2.full.min.js' %}"></script>
+
+{% endblock %}
+<script>
+    $(function () {
+        //Initialize Select2 Elements
+        $('.select2').select2();
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        });
+    });
+
+    $('#id_is_person').change(function () {
+        var nombre_negocio = $('#divNegocio');
+        var is_person = $('#id_is_person');
+        console.log($('#id_is_person').val());
+        //var labelNombreNegocio = $("label:contains('Nombre negocio')");
+        if (is_person === 'EMPRESA') {
+            nombre_negocio.show()
+            //labelNombreNegocio.show();
+        } else {
+            nombre_negocio.hide();
+            //labelNombreNegocio.hide();
+        }
+    })
+</script>
